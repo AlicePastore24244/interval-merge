@@ -29,3 +29,10 @@ The trade-off is simplicity over generality. Intervals are plain `[number, numbe
 ## Edge cases
 
 Intervals are half-open: `[1, 3)` and `[3, 5)` share the point `3` between them, so `merge` collapses them into `[1, 5)`. This is the one decision that will surprise you if you expected closed ranges. Empty intervals `[x, x)` are silently dropped by every operation. Reversed pairs `[5, 3]` are normalised to `[3, 5]`. Non-finite values (`NaN`, `Infinity`) throw `TypeError`.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
