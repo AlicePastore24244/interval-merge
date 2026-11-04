@@ -1,6 +1,6 @@
 {
   "name": "interval-merge",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "combine or split ranges of [start, end) intervals",
   "type": "module",
   "main": "src/index.js",
